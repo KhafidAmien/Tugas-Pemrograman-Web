@@ -8,13 +8,37 @@
 </head>
 <body>
 
-    <h1 class="text-center mt-3">Selamat datang di belajar laravel amien, saya membuat CRUD sederhana dengan laravel.</h1>
-    <div class="container">
-        <div class="row ">
-        <div class="col justify-content-start">
-        <a href="{{route('mahasiswa.tampil')}}" class="text-center btn btn-primary">Lihat List Mahasiswa</a>
+    @if (Route::has('login'))
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            @auth
+                <li class="nav-item">
+                <a class="nav-link" href="{{ url('/dashboard') }}">Dashboard</a>
+                </li>
+            @else
+                <li class="nav-item">
+                <a class="nav-link" href="{{ route('login') }}">Log in</a>
+                </li>
+            @if (Route::has('register'))
+                <li class="nav-item">
+                <a class="nav-link" href="{{ route('register') }}">Register</a>
+                </li>
+            @endif
+            @endauth
+            </ul>
+            </div>
         </div>
-        </div>
-    </div>
+            </nav>
+    @endif
+
+    <section class="p-5">
+    <h1 class="text-center mt-3 mb-5">Selamat datang di belajar laravel amien, saya membuat CRUD sederhana dengan laravel. Silakan register atau Login bang biar ga penasaran</h1>
+    
+    
+    </section>
+    
+    
 </body>
 </html>
